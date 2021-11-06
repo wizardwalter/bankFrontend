@@ -1,11 +1,11 @@
 import React from 'react';
-import { UserContext } from '../../App';
+import { AuthContext } from '../../App';
 import {Card} from 'react-bootstrap';
 
 import styles from './Deposit.module.css';
 
 const Deposit = () => {
-  const ctx = React.useContext(UserContext);
+  const ctx = React.useContext(AuthContext);
   const [status, setStatus] = React.useState('')
   const [deposit, setDeposit] = React.useState('');
   const [balance, setBalance] = React.useState(Number(ctx.users[0].balance));

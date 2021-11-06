@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React from 'react'; 
-import { UserContext } from "../../App";
-import Card from "../../UserContext";
+import React, { useState, useEffect, SyntheticEvent } from 'react';
+import { AuthContext } from '../../App';
+
+import Card from "../../Card";
 
 
 
@@ -9,18 +10,18 @@ import Card from "../../UserContext";
 
 
 function CreateAccount(){
+  const globalState             = React.useContext(AuthContext)
   const [show, setShow]         = React.useState(true);
   const [status, setStatus]     = React.useState('');
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
   const [button, setButton]     = React.useState(true);
-  const ctx = React.useContext(UserContext);  
+   
+
 
   
-
-  
-  
+  console.log(globalState)
   function validate(field: string, label: string){
       if (!field) {
         setStatus('Error: ' + label);
@@ -34,13 +35,13 @@ function CreateAccount(){
       
   }
 
-  function handleCreate(){
+  function handleCreate(e: SyntheticEvent){
+    e.preventDefault();
     console.log(name,email,password);
     if (!validate(name,     'name'))     return;
     if (!validate(email,    'email'))    return;
     if (!validate(password, 'password')) return;
     if (password.length < 8) return;
-    ctx.users.push({name,email,password,balance:0});
     if(validate(name, 'name') && validate(email, 'email') && validate(password, 'password')){
       axios.post('http://localhost:8080/users/create',{name:name, email:email, password:password, balance:0})
       .then(response => setStatus(response.data.message))

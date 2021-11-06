@@ -2,10 +2,16 @@ import React from 'react';
 import styles from './Home.module.css';
 import {Card, Button, Row} from 'react-bootstrap';
 import logo from './logo.png';
+import { AuthContext } from '../../App';
 
 
 
-const Home = () => (
+const Home = () => {
+  const globalState             = React.useContext(AuthContext)
+
+ 
+
+  return(
   <Card style={{border: '2px solid black'}}>
     <Row style={{ justifyContent: 'center' }}>
     <Card.Img variant="top" src={logo} style={{ height: '175px', width: '175px' }} />
@@ -21,6 +27,7 @@ const Home = () => (
     </Row>
   </Card.Footer>
 </Card>
-);
+  )
+};
 
 export default Home;

@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './AllData.module.css';
-import { UserContext } from '../../App';
+import './AllData.module.css';
 import { Card } from 'react-bootstrap';
+import { AuthContext } from '../../App';
 
 
 
 function AllData() {
-  const ctx = React.useContext(UserContext);
+  const ctx = React.useContext(AuthContext);
 
 
 

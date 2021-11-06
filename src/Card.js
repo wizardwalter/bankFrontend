@@ -1,8 +1,7 @@
 
-import React from 'react';
-   
 
-const UserContext = React.createContext(null);
+import React from "react";
+   
 
 function Card(props){
     function classes(){

@@ -1,11 +1,11 @@
 import React from 'react';
-import { UserContext } from '../../App';
-import {Card} from 'react-bootstrap';
 
+import {Card} from 'react-bootstrap';
+import { AuthContext } from '../../App';
 import styles from './Deposit.module.css';
 
 const Withdraw = () => {
-  const ctx = React.useContext(UserContext);
+  const ctx = React.useContext(AuthContext);
   const [status, setStatus] = React.useState('')
   const [withdraw, setDeposit] = React.useState('');
   const [balance, setBalance] = React.useState(Number(ctx.users[0].balance));
