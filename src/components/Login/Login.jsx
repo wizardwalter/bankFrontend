@@ -16,7 +16,7 @@ import { AuthContext } from '../../App';
       setTimeout(() => setStatus(''),3000);
       return false;
     } else if(password.length < 8) {
-      setStatus(label + 'must be 8 characters or longer');
+      setStatus(label + 'must be 8 characters or longer'); 
       setTimeout(() => setStatus(''),3000);
     }
       return true;
