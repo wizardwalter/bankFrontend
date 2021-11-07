@@ -31,15 +31,15 @@ const NavBar = () => {
             <Link className="nav-link" to="/withdraw/">Withdraw</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/balance/">Balance</Link>
-          </li>
-          <li className="nav-item">
             <Link className="nav-link" to="/alldata/">Account Balance</Link>
           </li>
           <li className="nav-item"> 
               <Link className="nav-link" onClick={handleLogout} to='/' >Logout</Link>
             </li>           
         </ul>
+        <span className="navbar-text">
+       {user.name}
+      </span>
       </div>
     </nav>
   </div>

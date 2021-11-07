@@ -1,8 +1,6 @@
 import React, {useRef} from 'react';
 import { AuthContext } from "../../AuthContext";
 import {Card} from 'react-bootstrap';
-
-import styles from './Withdraw.module.css';
 import axios from 'axios';
 
 const Withdraw = () => {

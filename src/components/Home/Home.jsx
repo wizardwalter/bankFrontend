@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Home.module.css';
 import {Card, Button, Row} from 'react-bootstrap';
 import logo from './logo.png';
 import { AuthContext } from '../../AuthContext';
@@ -21,11 +20,6 @@ const Home =  () => {
      Hello {user.name} Welcome Back!
     </Card.Text>
   </Card.Body>
-  <Card.Footer>
-    <Row style={{ justifyContent: 'center' }}>
-    <Button style={{width: '150px', height: '40px'}} variant="primary"><a style={{color: 'white', textDecoration: 'none'}} href="#/CreateAccount/">Create Account</a></Button>
-    </Row>
-  </Card.Footer>
 </Card> 
   : 
   <Card style={{border: '2px solid black'}}>
