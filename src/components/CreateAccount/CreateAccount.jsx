@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, SyntheticEvent } from 'react';
-import { AuthContext } from '../../App';
+import { AuthContext } from '../../AuthContext';
 
 import Card from "../../Card";
 
@@ -10,7 +10,7 @@ import Card from "../../Card";
 
 
 function CreateAccount(){
-  const globalState             = React.useContext(AuthContext)
+  const {user}            = React.useContext(AuthContext)
   const [show, setShow]         = React.useState(true);
   const [status, setStatus]     = React.useState('');
   const [name, setName]         = React.useState('');
@@ -21,8 +21,8 @@ function CreateAccount(){
 
 
   
-  console.log(globalState)
-  function validate(field: string, label: string){
+  console.log(user)
+  function validate(field, label){
       if (!field) {
         setStatus('Error: ' + label);
         setTimeout(() => setStatus(''),3000);
@@ -35,7 +35,7 @@ function CreateAccount(){
       
   }
 
-  function handleCreate(e: SyntheticEvent){
+  function handleCreate(e){
     e.preventDefault();
     console.log(name,email,password);
     if (!validate(name,     'name'))     return;

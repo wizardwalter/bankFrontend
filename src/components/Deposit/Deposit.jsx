@@ -1,20 +1,21 @@
-import React from 'react';
-import { AuthContext } from '../../App';
+import React, {useRef} from 'react';
+import { AuthContext } from "../../AuthContext";
 import {Card} from 'react-bootstrap';
 
 import styles from './Deposit.module.css';
+import axios from 'axios';
 
 const Deposit = () => {
-  const ctx = React.useContext(AuthContext);
+  const {user,setUser} = React.useContext(AuthContext);
   const [status, setStatus] = React.useState('')
-  const [deposit, setDeposit] = React.useState('');
-  const [balance, setBalance] = React.useState(Number(ctx.users[0].balance));
+  const [deposit, setDeposit] = React.useState(0);
+  const [balance, setBalance] = React.useState(user.balance)
   const [button, setButton] = React.useState(true);
+  const currentState = useRef()
   
- 
 
-
-  function validate(field: any){
+currentState.current = balance;
+  function validate(field){
     if (!field) {
       setStatus('Error input field left blank' );
       setTimeout(() => setStatus(''),3000);
@@ -22,28 +23,24 @@ const Deposit = () => {
     if(!field === (/^\d+$/.test(field))){
       setStatus('Error input must contain only numbers, no + or - either');
       setTimeout(() => setStatus(''),2000);
-      setTimeout(() => setBalance(Number(ctx.users[0].balance)),2000);
     }
       return true;
     
 }
 
-function handleCreate(){
+ async function handleCreate(){
   if (!validate(deposit))  return;
-  setBalance(balance + Number(deposit));
-  ctx.users.map((item: any) =>{
-   if(item.name === 'walter'){
-    item.balance = balance
-   }
-   return balance;
-  })
-}    
+   await setBalance(Number(balance) + Number(deposit));
+   await axios.post(`http://localhost:8080/users/setBalance/${user._id}`,{balance:currentState.current})
+  .then( (res)=> setUser(res.data.user))
+ }
+    
 
 
   return(
     <Card style={{ width: '18rem' }}>
   <Card.Body>
-    <Card.Title>Balance = { balance }</Card.Title>
+    <Card.Title>Balance = { user.balance }</Card.Title>
     <Card.Text>
      <input type="text" value={deposit} onChange={e => {setDeposit(e.currentTarget.value); setButton(false)}} />
     </Card.Text>

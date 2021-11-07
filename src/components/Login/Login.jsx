@@ -1,15 +1,19 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Card from "../../Card";
-import { AuthContext } from '../../App';
+import { AuthContext } from '../../AuthContext';
+
 
  function Login(){
-  const [show, setShow]         = React.useState(true);
-  const [status, setStatus]     = React.useState('');
-  const [email, setEmail]       = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [button, setButton]     = React.useState(true);  
-  const globalState             = React.useContext(AuthContext)
+  const [show, setShow]         = useState(true);
+  const [status, setStatus]     = useState('');
+  const [email, setEmail]       = useState('');
+  const [password, setPassword] = useState('');
+  const [button, setButton]     = useState(true);  
+  const {user, setUser}         = useContext(AuthContext)
+
+  
+
   function validate(field, label){
     if (!field) {
       setStatus('Error: ' + label);
@@ -22,23 +26,23 @@ import { AuthContext } from '../../App';
       return true;
     
 }
-  async function handleCreate (){
+   function handleCreate (){
     console.log(email,password);
     let data = {email:email, password:password};
     if (!validate(email,    'email'))    return;
     if (!validate(password, 'password')) return;
     if (password.length < 8) return;
     if(validate(email, 'email') && validate(password, 'password')){
-     await axios.post('http://localhost:8080/users/login',data)
+      axios.post('http://localhost:8080/users/login',data)
     .then( response =>{
-      localStorage.setItem('userId',response.data.userId)
-      localStorage.setItem('token',response.data.token)
+      setUser(response.data.user)
+      localStorage.setItem('token', response.data.token)
     })
     .catch(error => setStatus(error))
     setShow(false)
   } 
 }  
-  console.log(globalState)
+  console.log(user)
   return (
     
     <Card

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { BrowserRouter, Route} from "react-router-dom";
+import React, {useEffect, useMemo, useState} from 'react';
+import { BrowserRouter, Route, Router} from "react-router-dom";
 import axios from 'axios';
 import NavBar from './components/NavBar/NavBar';
 import AllData from './components/AllData/AllData';
@@ -9,7 +9,8 @@ import Login from './components/Login/Login';
 import Withdraw from './components/Withdraw/Withdraw';
 import Deposit from './components/Deposit/Deposit';
 import Balance from './components/Balance/Balance';
-export const AuthContext = React.createContext();
+import { AuthContext } from './AuthContext';
+import history from './history';
 
 
 
@@ -18,33 +19,12 @@ export const AuthContext = React.createContext();
 
 
 function App() {
-  
-  const globalState                 = React.useContext(AuthContext)
-  const [email, setEmail]           =React.useState(null)
-  const [name, setName]             =React.useState(null)
-  const [balance, setBalance]       =React.useState(null)
-  const initialState = {
-    userId: localStorage.getItem('userId'),
-    token: localStorage.getItem('token'),
-    email: email,
-    name: name,
-    balance: balance
-  };
-  useEffect(()=>{
-    console.log(initialState.userId)
-   axios.get(`http://localhost:8080/users/${initialState.userId}`)
-        .then(res => {
-          setEmail(res.data.email)
-          setName(res.data.username)
-          setBalance(res.data.balance)
-        })
-      
-
-  },[])
-  
+  const [user, setUser]         =React.useState(null)
+  const providerValue = {user,setUser}
   return (
-    <BrowserRouter>
-    <AuthContext.Provider value={initialState}>
+    
+    <BrowserRouter history={history}>
+    <AuthContext.Provider value={providerValue}>
       <NavBar/>
         <div className="container" style={{padding: "20px"}}>
           <Route path="/" exact component={Home}/>
@@ -57,6 +37,7 @@ function App() {
         </div>     
         </AuthContext.Provider>
     </BrowserRouter>
+    
   );
 }
 

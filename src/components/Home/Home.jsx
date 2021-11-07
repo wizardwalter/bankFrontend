@@ -2,23 +2,23 @@ import React from 'react';
 import styles from './Home.module.css';
 import {Card, Button, Row} from 'react-bootstrap';
 import logo from './logo.png';
-import { AuthContext } from '../../App';
+import { AuthContext } from '../../AuthContext';
 
 
 
 const Home =  () => {
-  const globalState             = React.useContext(AuthContext)
+  const {user}             = React.useContext(AuthContext)
  
    return(
     <>
-    { globalState.name !== null ?
+    { user !== null ?
   <Card style={{border: '2px solid black'}}>
     <Row style={{ justifyContent: 'center' }}>
     <Card.Img variant="top" src={logo} style={{ height: '175px', width: '175px' }} />
     </Row>
   <Card.Body style={{ borderBottom : '2px solid black'}}>
     <Card.Text style={{textAlign: "center"}}>
-     Hello {globalState.name} Welcome Back!
+     Hello {user.name} Welcome Back!
     </Card.Text>
   </Card.Body>
   <Card.Footer>
