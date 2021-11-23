@@ -13,6 +13,7 @@ function CreateAccount() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [button, setButton] = React.useState(true);
+  const baseUrl = "https://bankbackend101.herokuapp.com/"
 
   console.log(user);
   function validate(field, label) {
@@ -40,7 +41,7 @@ function CreateAccount() {
       validate(password, "password")
     ) {
       axios
-        .post("http://localhost:8080/users/create", {
+        .post(baseUrl + "users/create", {
           name: name,
           email: email,
           password: password,

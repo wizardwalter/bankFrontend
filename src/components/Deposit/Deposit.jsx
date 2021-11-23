@@ -13,6 +13,7 @@ const Deposit = () => {
   const [balance, setBalance] = React.useState(user.balance)
   const [button, setButton] = React.useState(true);
   const currentState = useRef()
+  const baseUrl = "https://bankbackend101.herokuapp.com/"
   
 
 currentState.current = balance;
@@ -32,7 +33,7 @@ currentState.current = balance;
  async function handleCreate(){
   if (!validate(deposit))  return;
    await setBalance(Number(balance) + Number(deposit));
-   await axios.post(`http://localhost:8080/users/setBalance/${user._id}`,{balance:currentState.current})
+   await axios.post(baseUrl + `users/setBalance/${user._id}`,{balance:currentState.current})
   .then( (res)=> setUser(res.data.user))
  }
     

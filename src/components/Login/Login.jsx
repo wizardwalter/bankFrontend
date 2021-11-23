@@ -15,10 +15,11 @@ function Login() {
   const [password, setPassword] = useState("");
   const [button, setButton] = useState(true);
   const { user, setUser } = useContext(AuthContext);
+  const baseUrl = "https://bankbackend101.herokuapp.com/"
 
   async function googleSuccess(res) {
    const token  = await res?.tokenId;
-    await axios.get(`http://localhost:8080/users/google/${token}`)
+    await axios.get(baseUrl + `users/google/${token}`)
     .then( response=>{
       setUser(response.data.user)
       localStorage.setItem("token", response.data.token);
