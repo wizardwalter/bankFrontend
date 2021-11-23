@@ -1,0 +1,85 @@
+.homeCard{
+    height: 300px;
+    width: 500px;
+}
+
+.homeRow{
+    margin-top: 30px;
+    height: 170px;
+    width: 529px;
+}
+.titleSpan{
+margin-left: 45px;
+margin-top: 10px;
+font-size: 24px;
+font-weight: 900;
+text-decoration: underline;
+}
+.homeLogo{
+    height: 110px;
+    width: 110px;
+}
+
+.button {
+    appearance: button;
+    background-color: #1899D6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+   }
+   
+   .button:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+   }
+   
+   .button:main, .button:focus {
+    user-select: auto;
+   }
+   
+   .button:hover:not(:disabled) {
+    filter: brightness(1.1);
+   }
+   
+   .button:disabled {
+    cursor: auto;
+   }
+   
+   .button:active:after {
+    border-width: 0 0 0px;
+   }
+   
+   .button:active {
+    padding-bottom: 10px;
+   }

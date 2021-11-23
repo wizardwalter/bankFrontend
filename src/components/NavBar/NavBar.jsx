@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import styles from './NavBar.module.css';
+import './NavBar.css';
 import { AuthContext } from '../../AuthContext';
 
  
@@ -16,47 +16,53 @@ const NavBar = () => {
   return(
     <>
     { user !== null ?
-  <div className={styles.NavBar} data-testid="NavBar">
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">BadBank</Link>
+  <div className="row d-flex justify-content-around" data-testid="NavBar">
+ <nav className="navbar navbar-expand-lg">
+    <div className="col-6 d-flex align-items-center justify-content-around">
+    <Link className="navbar-brand" to="/"><img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/64/000000/external-bank-urban-infrastructure-inipagistudio-mixed-inipagistudio.png" alt="logo"/> Monroe Bank</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/deposit/">Deposit</Link>
+            <Link className="link" to="/deposit/">Deposit</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/withdraw/">Withdraw</Link>
+            <Link className="link" to="/withdraw/">Withdraw</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/alldata/">Account Balance</Link>
+            <Link className="link" to="/alldata/">Account Balance</Link>
           </li>
-          <li className="nav-item"> 
-              <Link className="nav-link" onClick={handleLogout} to='/' >Logout</Link>
+          </ul>
+      </div>
+    </div>
+    <div className="col-6 d-flex align-items-center justify-content-end">
+      <ul className="navbar-nav">
+    <li className="nav-item"> 
+              <Link className="link" onClick={handleLogout} to='/' >Logout</Link>
             </li>           
-        </ul>
-        <span className="navbar-text">
+        <span className="navbar-item">
        {user.name}
       </span>
+      </ul>
       </div>
-    </nav>
+  </nav>
   </div>
       :
-      <div className={styles.NavBar} data-testid="NavBar">
+      <div className="NavBar" data-testid="NavBar">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">BadBank</a>
+      <Link className="navbar-brand" to="/"><img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/64/000000/external-bank-urban-infrastructure-inipagistudio-mixed-inipagistudio.png" alt="logo"/> Monroe Bank</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/CreateAccount/">Create Account</a>
+              <a className="link" href="/CreateAccount/">Create Account</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/login/">Login</a>
+              <a className="link" href="/login/">Login</a>
             </li>        
           </ul>
         </div>

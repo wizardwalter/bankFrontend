@@ -2,6 +2,7 @@ import React from 'react';
 import './AllData.module.css';
 import { Card } from 'react-bootstrap';
 import { AuthContext } from '../../AuthContext';
+import styles from './AllData.module.css'
 
 
 
@@ -12,16 +13,15 @@ function AllData() {
 
   
     return (
-      <Card  style={{ border: 'solid 2px black', width: '400px', marginBottom: '10px' }}>
+      <Card className={styles.userDataCard} >
         <Card.Body>
-          <Card.Title>{user.name}'s Balance</Card.Title>
-          <Card.Text>
+          <h3 className={styles.balance}>{user.name}'s Balance</h3>
+          <div className={styles.userInfo}>
             <ul style={{ listStyleType: 'none' }}>
-              <li>Name = {user.name}</li>
-              <li>Email = {user.email}</li>
-              <li>Balance = {JSON.stringify(user.balance)}</li>
+              <li>Email: {user.email}</li>
+              <li>Balance: {JSON.stringify(user.balance)}</li>
             </ul>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     )

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+.container {
+  height: 900px;
+  background: hsla(120, 2%, 53%, .90);
+
+  background: linear-gradient(
+    90deg,
+    hsla(120, 2%, 53%, .90) 0%,
+    hsla(0, 83%, 40%, .90) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(120, 2%, 53%, .90) 0%,
+    hsla(0, 83%, 40%, .90) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(120, 2%, 53%, .90) 0%,
+    hsla(0, 83%, 40%, .90) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#868A86", endColorstr="#BB1111", GradientType=1 );
+  display: flex;
+  justify-content: center;
+  font-family: 'Oxygen', sans-serif;
+}
+.row {
+  margin-top: 30px;
+}

@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import { AuthContext } from "../../AuthContext";
 import {Card} from 'react-bootstrap';
+import styles from './Deposit.module.css'
 
 
 import axios from 'axios';
@@ -38,14 +39,15 @@ currentState.current = balance;
 
 
   return(
-    <Card style={{ width: '18rem' }}>
+    <Card className={styles.depositCard} >
   <Card.Body>
-    <Card.Title>Balance = { user.balance }</Card.Title>
+    <h1 className={styles.depositHeader}>Deposit</h1>
     <Card.Text>
-     <input type="text" value={deposit} onChange={e => {setDeposit(e.currentTarget.value); setButton(false)}} />
+      <h5 className={styles.balance}>Balance =<span className={styles.userBalance}> $ { user.balance }</span></h5>
+     <input className={styles.input} type="number" value={deposit} onChange={e => {setDeposit(e.currentTarget.value); setButton(false)}} />
     </Card.Text>
     <p>{status}</p>
-    <button type='submit' disabled={button} onClick={handleCreate}>Submit</button>
+    <button className={styles.submitButton} type='submit' disabled={button} onClick={handleCreate}>Deposit</button>
   </Card.Body>
 </Card>
   )

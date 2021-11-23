@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import { AuthContext } from "../../AuthContext";
 import {Card} from 'react-bootstrap';
 import axios from 'axios';
+import styles from './Withdraw.module.css'
 
 const Withdraw = () => {
   const {user,setUser} = React.useContext(AuthContext);
@@ -36,14 +37,15 @@ currentState.current = balance;
 
 
   return(
-    <Card style={{ width: '18rem' }}>
+    <Card className={styles.depositCard} >
   <Card.Body>
-    <Card.Title>Balance = { user.balance }</Card.Title>
+    <h1 className={styles.depositHeader}>Withdraw</h1>
     <Card.Text>
-     <input type="text" value={withdraw} onChange={e => {setWithdraw(e.currentTarget.value); setButton(false)}} />
+      <h5 className={styles.balance}>Balance =<span className={styles.userBalance}> $ { user.balance }</span></h5>
+     <input className={styles.input} type="number" value={withdraw} onChange={e => {setWithdraw(e.currentTarget.value); setButton(false)}} />
     </Card.Text>
     <p>{status}</p>
-    <button type='submit' disabled={button} onClick={handleCreate}>Submit</button>
+    <button className={styles.submitButton} type='submit' disabled={button} onClick={handleCreate}>Withdraw</button>
   </Card.Body>
 </Card>
   )
