@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import './NavBar.css';
 import { AuthContext } from '../../AuthContext';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 
  
 const NavBar = () => {
@@ -21,9 +21,7 @@ const NavBar = () => {
  <nav className="navbar navbar-expand-lg">
     <div className="col-6 d-flex align-items-center justify-content-around">
     <Link className="navbar-brand" to="/"><img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/64/000000/external-bank-urban-infrastructure-inipagistudio-mixed-inipagistudio.png" alt="logo"/> Monroe Bank</Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
+      <NavBar.Toggle className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"/>
       <Navbar.Collapse className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -54,9 +52,7 @@ const NavBar = () => {
       <div className="NavBar" data-testid="NavBar">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/"><img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/64/000000/external-bank-urban-infrastructure-inipagistudio-mixed-inipagistudio.png" alt="logo"/> Monroe Bank</Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+      <NavBar.Toggle className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"/>
         <Navbar.Collapse className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
