@@ -1,6 +1,20 @@
+@media screen and (max-width: 500px)  {
+    .homeCard{
+        height: 300px;
+        width: 400px;
+    }
+    
+    .homeRow{
+        margin-top: 30px;
+        height: 170px;
+        width: 429px;
+    }
+}
+
+
 .homeCard{
     height: 300px;
-    width: 400px;
+    width: 500px;
 }
 
 .homeRow{
