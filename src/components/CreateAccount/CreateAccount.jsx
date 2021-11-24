@@ -28,9 +28,7 @@ function CreateAccount() {
     return true;
   }
 
-  function handleCreate(e) {
-    e.preventDefault();
-    console.log(name, email, password);
+  async function handleCreate() {
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validate(password, "password")) return;
@@ -40,7 +38,7 @@ function CreateAccount() {
       validate(email, "email") &&
       validate(password, "password")
     ) {
-      axios
+      await axios
         .post(baseUrl + "users/create", {
           name: name,
           email: email,
