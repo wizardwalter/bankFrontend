@@ -24,6 +24,11 @@ currentState.current = balance;
       setStatus('Error input must contain only numbers, no + or - either');
       setTimeout(() => setStatus(''),2000);
     }
+    if(currentState.current - withdraw < 0){
+      setStatus('Error cannot go into the negatives');
+      setTimeout(() => setStatus(''),2000);
+      return false
+    }
       return true;
     
 }
