@@ -52,7 +52,7 @@ function Login() {
     if (password.length < 8) return;
     if (validate(email, "email") && validate(password, "password")) {
       await axios
-        .post("http://localhost:8080/users/login", data)
+        .post(baseUrl + "users/login", data)
         .then((response) => {
           if (response.data.ok === true) {
             setUser(response.data.user)
