@@ -20,10 +20,17 @@ function CreateAccount() {
     const token  = await res?.tokenId;
      await axios.post(baseUrl + `users/google/create/${token}`)
      .then( response=>{
-       setUser(response.data.user)
-       localStorage.setItem("token", response.data.token);
-       localStorage.setItem("user", JSON.stringify(response.data.user))
-       setShow(false);
+       if(response.data.ok){
+        setUser(response.data.user)
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user))
+        setStatus(response.data.message);
+        setShow(false);
+       }else{
+        setStatus(response.data.message);
+        setTimeout(() => setStatus(""), 3000);
+       }
+       
      })
      .catch(err => console.log(err));
    }
@@ -61,16 +68,22 @@ function CreateAccount() {
           balance: 0,
         })
         .then((response) => {
-          setUser(response.data.user);
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", JSON.stringify(response.data.user));
-          setStatus(response.data.message);
+          if(response.data.ok){
+            setUser(response.data.user);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+            setStatus(response.data.message);
+            setShow(false);
+          }else{
+            setStatus(response.data.message);
+            setTimeout(() => setStatus(""), 3000);
+          }
         })
         .catch((error) => {
           console.log(error);
         });
     }
-    setShow(false);
+   
   }
 
   function clearForm() {
