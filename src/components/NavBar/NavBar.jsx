@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import './NavBar.css';
 import { AuthContext } from '../../AuthContext';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
  
 const NavBar = () => {
@@ -23,7 +24,7 @@ const NavBar = () => {
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
+      <Navbar.Collapse className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
             <Link className="link" to="/deposit/">Deposit</Link>
@@ -35,7 +36,7 @@ const NavBar = () => {
             <Link className="link" to="/alldata/">Account Balance</Link>
           </li>
           </ul>
-      </div>
+      </Navbar.Collapse>
     </div>
     <div className="col-6 d-flex align-items-center justify-content-end">
       <ul className="navbar-nav">
@@ -56,7 +57,7 @@ const NavBar = () => {
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <Navbar.Collapse className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="link" href="/CreateAccount/">Create Account</a>
@@ -65,7 +66,7 @@ const NavBar = () => {
               <a className="link" href="/login/">Login</a>
             </li>        
           </ul>
-        </div>
+        </Navbar.Collapse>
       </nav>
     </div>
       } 
