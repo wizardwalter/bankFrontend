@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { AuthContext } from "../../AuthContext";
 import styles from './CreateAccount.module.css'
-
+import GoogleLogin from "react-google-login";
 import Card from "../../Card";
 
 function CreateAccount() {
@@ -16,6 +16,21 @@ function CreateAccount() {
   const baseUrl = "https://bankbackend101.herokuapp.com/"
 
   console.log(user);
+  async function googleSuccess(res) {
+    const token  = await res?.tokenId;
+     await axios.post(baseUrl + `users/google/create/${token}`)
+     .then( response=>{
+       setUser(response.data.user)
+       localStorage.setItem("token", response.data.token);
+       localStorage.setItem("user", JSON.stringify(response.data.user))
+       setShow(false);
+     })
+     .catch(err => console.log(err));
+   }
+   function googleFailure(error) {
+     console.log('error:',error)
+     console.log("Google Create Account was unsuccessful, please try again.")
+   }
   function validate(field, label) {
     if (!field) {
       setStatus("Error: " + label);
@@ -125,6 +140,20 @@ function CreateAccount() {
             >
               Create Account
             </button>
+            <br />
+            <GoogleLogin
+              clientId="1037994517915-866vklg7sl4srf912sov3dig06d58mgm.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <button
+                  className={styles.googleButton}
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                ><img className="googleimg" src="https://img.icons8.com/clouds/100/000000/google-logo.png" alt="google"/>Create Account</button>
+              )}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
           </>
         ) : (
           <>
