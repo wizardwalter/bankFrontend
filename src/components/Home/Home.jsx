@@ -44,7 +44,7 @@ const Home =  () => {
 </Card.Body>
 <Card.Footer>
   <Row style={{ justifyContent: 'center' }}>
-  <button className="button"><a style={{color: 'white', textDecoration: 'none'}} href="/CreateAccount/">Create Account</a></button>
+  <button className="button" ><a style={{color: 'white', textDecoration: 'none'}} href="/CreateAccount/">Create Account</a></button>
   </Row>
 </Card.Footer>
 </Card>

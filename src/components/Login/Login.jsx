@@ -80,7 +80,7 @@ function Login() {
             Email address
             <br />
             <input
-              type="input"
+              type="email"
               className="form-control"
               id="email"
               placeholder="Enter email"
